@@ -8,6 +8,7 @@ LABEL branch=$branch \
         buildtime=$buildtime \
         owner=$owner 
 # put your commands here
+COPY Readme.txt /docs/
 
 ENTRYPOINT ["/entrypoint.sh"]
 CMD ["influxd"]
