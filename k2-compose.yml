@@ -1,0 +1,30 @@
+version: "2"
+
+hosts:
+#  as: 10.1.10.48:4243
+  as: unix:///var/run/docker.sock
+
+project: demo
+
+services:
+
+  grafana:
+    image: dev.k2data.com.cn:5001/demo/grafana:master-0.0.1-suffix
+    health_check:
+      http: http://localhost:3000
+      timeout: 10
+    ports:
+      - 3000:3000
+#    entrypoint: ["ping", "localhost"]
+    s_depends_on:
+      - influxdb
+
+  influxdb:
+    image: dev.k2data.com.cn:5001/demo/influxdb:master-0.0.1-suffix
+    host: as
+    health_check:
+      http: www.baidu.com
+      timeout: 10
+    ports:
+      - 8086:8086
+#    entrypoint: ["ping", "localhost"]
