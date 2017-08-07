@@ -15,7 +15,6 @@ services:
       timeout: 10
     ports:
       - 3000:3000
-#    entrypoint: ["ping", "localhost"]
     s_depends_on:
       - influxdb
 
@@ -25,11 +24,10 @@ services:
     environment:
       - INFLUXDB_OPENTSDB_ENABLED=true
     health_check:
-      http: www.baidu.com
+      socket:  localhost:8086
       timeout: 10
     volumes:
       - ./db:/var/lib/influxdb
     ports:
       - 8086:8086
       - 4242:4242
-#    entrypoint: ["ping", "localhost"]

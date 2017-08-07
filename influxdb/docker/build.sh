@@ -1,6 +1,6 @@
 #!/bin/bash
 set -e
-SCRIPT_DIR=$(dirname $(readlink -e $0))
+SCRIPT_DIR=$(dirname $0)
 . ${SCRIPT_DIR}/image
 
 docker build -t ${IMAGE} \
