@@ -9,7 +9,7 @@ project: demo
 services:
 
   grafana:
-    image: dev.k2data.com.cn:5001/demo/grafana:master-0.0.1-suffix
+    image: dev.k2data.com.cn:5001/demo/grafana:master-0.0.1
     health_check:
       http: http://localhost:3000
       timeout: 10
@@ -19,7 +19,7 @@ services:
       - influxdb
 
   influxdb:
-    image: dev.k2data.com.cn:5001/demo/influxdb:master-0.0.1-suffix
+    image: dev.k2data.com.cn:5001/demo/influxdb:master-0.0.1
     host: as
     environment:
       - INFLUXDB_OPENTSDB_ENABLED=true
