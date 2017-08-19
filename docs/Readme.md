@@ -43,6 +43,7 @@ services:
 ##### 部署监控系统
 
 1. 部署、配置influxdb
+
 ```
 # Tsui @ Capitan in ~/git-resource/docker-presentation on git:master x [21:45:37]
 $ k2-compose up -d
