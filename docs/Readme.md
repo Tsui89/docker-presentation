@@ -1,7 +1,7 @@
 #### 简单搭建监控系统
 
 基础环境：
-  部署k2-compose
+  [部署k2-compose](https://tsui89.github.io/k2-compose)
 
 下载监控系统部署模版
 
