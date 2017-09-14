@@ -1,0 +1,1551 @@
+{
+  "description": "Performance metrics for demo.demo", 
+  "links": [], 
+  "tags": [
+    "demo.demo"
+  ], 
+  "editable": true, 
+  "__inputs": [
+    {
+      "description": "", 
+      "pluginName": "InfluxDB", 
+      "label": "InfluxProd", 
+      "pluginId": "influxdb", 
+      "type": "datasource", 
+      "name": "DS_INFLUXPROD"
+    }
+  ], 
+  "__requires": [
+    {
+      "version": "", 
+      "type": "panel", 
+      "id": "singlestat", 
+      "name": "Singlestat"
+    }, 
+    {
+      "version": "", 
+      "type": "panel", 
+      "id": "graph", 
+      "name": "Graph"
+    }, 
+    {
+      "version": "3.1.1", 
+      "type": "grafana", 
+      "id": "grafana", 
+      "name": "Grafana"
+    }, 
+    {
+      "version": "1.0.0", 
+      "type": "datasource", 
+      "id": "influxdb", 
+      "name": "InfluxDB"
+    }
+  ], 
+  "timezone": "browser", 
+  "schemaVersion": 12, 
+  "id": null, 
+  "style": "dark", 
+  "rows": [
+    {
+      "collapse": true, 
+      "title": "Hosts Status", 
+      "editable": true, 
+      "height": "90px", 
+      "panels": [
+        {
+          "mappingTypes": [
+            {
+              "name": "value to text", 
+              "value": 1
+            }, 
+            {
+              "name": "range to text", 
+              "value": 2
+            }
+          ], 
+          "interval": null, 
+          "description": "unix:///var/run/docker.sock", 
+          "colorBackground": true, 
+          "valueMaps": [
+            {
+              "text": "undeployed", 
+              "value": "0", 
+              "op": "="
+            }, 
+            {
+              "text": "stopped", 
+              "value": "1", 
+              "op": "="
+            }, 
+            {
+              "text": "error", 
+              "value": "2", 
+              "op": "="
+            }, 
+            {
+              "text": "running", 
+              "value": "3", 
+              "op": "="
+            }, 
+            {
+              "text": "no value", 
+              "value": "null", 
+              "op": "="
+            }
+          ], 
+          "tableColumn": "", 
+          "thresholds": "2,2.5", 
+          "rangeMaps": [
+            {
+              "text": "undeployed", 
+              "from": "0", 
+              "to": "null"
+            }, 
+            {
+              "text": "stopped", 
+              "from": "1", 
+              "to": "null"
+            }, 
+            {
+              "text": "error", 
+              "from": "2", 
+              "to": "null"
+            }, 
+            {
+              "text": "running", 
+              "from": "3", 
+              "to": "null"
+            }, 
+            {
+              "text": "no value", 
+              "from": "null", 
+              "to": "null"
+            }
+          ], 
+          "nullPointMode": "connected", 
+          "prefix": "", 
+          "cacheTimeout": null, 
+          "id": 1, 
+          "maxDataPoints": 1, 
+          "mappingType": 1, 
+          "span": 2, 
+          "links": [], 
+          "title": "default", 
+          "postfix": "", 
+          "postfixFontSize": "50%", 
+          "format": "none", 
+          "sparkline": {
+            "full": false, 
+            "fillColor": "rgba(31, 118, 189, 0.18)", 
+            "lineColor": "rgb(31, 120, 193)", 
+            "show": false
+          }, 
+          "colors": [
+            "rgba(245, 54, 54, 0.9)", 
+            "rgba(227, 233, 40, 0.86)", 
+            "rgba(50, 172, 45, 0.97)"
+          ], 
+          "targets": [
+            {
+              "dsType": "influxdb", 
+              "select": [
+                [
+                  {
+                    "type": "field", 
+                    "params": [
+                      "value"
+                    ]
+                  }, 
+                  {
+                    "type": "last", 
+                    "params": []
+                  }
+                ]
+              ], 
+              "rawQuery": true, 
+              "measurement": "demo.demo.hosts", 
+              "policy": "default", 
+              "query": "SELECT last(\"value\") FROM \"demo.demo.hosts\" WHERE \"host\"='default' AND time > now() - 60s", 
+              "tags": [
+                {
+                  "operator": "=", 
+                  "value": "default", 
+                  "key": "host"
+                }
+              ], 
+              "refId": "A", 
+              "resultFormat": "time_series"
+            }
+          ], 
+          "datasource": "${DS_INFLUXPROD}", 
+          "prefixFontSize": "50%", 
+          "valueName": "avg", 
+          "nullText": null, 
+          "type": "singlestat", 
+          "valueFontSize": "50%", 
+          "colorValue": false
+        }, 
+        {
+          "mappingTypes": [
+            {
+              "name": "value to text", 
+              "value": 1
+            }, 
+            {
+              "name": "range to text", 
+              "value": 2
+            }
+          ], 
+          "interval": null, 
+          "description": "unix:///var/run/docker.sock", 
+          "colorBackground": true, 
+          "valueMaps": [
+            {
+              "text": "undeployed", 
+              "value": "0", 
+              "op": "="
+            }, 
+            {
+              "text": "stopped", 
+              "value": "1", 
+              "op": "="
+            }, 
+            {
+              "text": "error", 
+              "value": "2", 
+              "op": "="
+            }, 
+            {
+              "text": "running", 
+              "value": "3", 
+              "op": "="
+            }, 
+            {
+              "text": "no value", 
+              "value": "null", 
+              "op": "="
+            }
+          ], 
+          "tableColumn": "", 
+          "thresholds": "2,2.5", 
+          "rangeMaps": [
+            {
+              "text": "undeployed", 
+              "from": "0", 
+              "to": "null"
+            }, 
+            {
+              "text": "stopped", 
+              "from": "1", 
+              "to": "null"
+            }, 
+            {
+              "text": "error", 
+              "from": "2", 
+              "to": "null"
+            }, 
+            {
+              "text": "running", 
+              "from": "3", 
+              "to": "null"
+            }, 
+            {
+              "text": "no value", 
+              "from": "null", 
+              "to": "null"
+            }
+          ], 
+          "nullPointMode": "connected", 
+          "prefix": "", 
+          "cacheTimeout": null, 
+          "id": 2, 
+          "maxDataPoints": 1, 
+          "mappingType": 1, 
+          "span": 2, 
+          "links": [], 
+          "title": "as", 
+          "postfix": "", 
+          "postfixFontSize": "50%", 
+          "format": "none", 
+          "sparkline": {
+            "full": false, 
+            "fillColor": "rgba(31, 118, 189, 0.18)", 
+            "lineColor": "rgb(31, 120, 193)", 
+            "show": false
+          }, 
+          "colors": [
+            "rgba(245, 54, 54, 0.9)", 
+            "rgba(227, 233, 40, 0.86)", 
+            "rgba(50, 172, 45, 0.97)"
+          ], 
+          "targets": [
+            {
+              "dsType": "influxdb", 
+              "select": [
+                [
+                  {
+                    "type": "field", 
+                    "params": [
+                      "value"
+                    ]
+                  }, 
+                  {
+                    "type": "last", 
+                    "params": []
+                  }
+                ]
+              ], 
+              "rawQuery": true, 
+              "measurement": "demo.demo.hosts", 
+              "policy": "default", 
+              "query": "SELECT last(\"value\") FROM \"demo.demo.hosts\" WHERE \"host\"='as' AND time > now() - 60s", 
+              "tags": [
+                {
+                  "operator": "=", 
+                  "value": "as", 
+                  "key": "host"
+                }
+              ], 
+              "refId": "A", 
+              "resultFormat": "time_series"
+            }
+          ], 
+          "datasource": "${DS_INFLUXPROD}", 
+          "prefixFontSize": "50%", 
+          "valueName": "avg", 
+          "nullText": null, 
+          "type": "singlestat", 
+          "valueFontSize": "50%", 
+          "colorValue": false
+        }
+      ], 
+      "id": 1, 
+      "showTitle": true
+    }, 
+    {
+      "collapse": true, 
+      "title": "Services Status", 
+      "editable": true, 
+      "height": "90px", 
+      "panels": [
+        {
+          "mappingTypes": [
+            {
+              "name": "value to text", 
+              "value": 1
+            }, 
+            {
+              "name": "range to text", 
+              "value": 2
+            }
+          ], 
+          "interval": null, 
+          "description": "Runs on as", 
+          "colorBackground": true, 
+          "valueMaps": [
+            {
+              "text": "undeployed", 
+              "value": "0", 
+              "op": "="
+            }, 
+            {
+              "text": "stopped", 
+              "value": "1", 
+              "op": "="
+            }, 
+            {
+              "text": "error", 
+              "value": "2", 
+              "op": "="
+            }, 
+            {
+              "text": "running", 
+              "value": "3", 
+              "op": "="
+            }, 
+            {
+              "text": "no value", 
+              "value": "null", 
+              "op": "="
+            }
+          ], 
+          "tableColumn": "", 
+          "thresholds": "2,2.5", 
+          "rangeMaps": [
+            {
+              "text": "undeployed", 
+              "from": "0", 
+              "to": "null"
+            }, 
+            {
+              "text": "stopped", 
+              "from": "1", 
+              "to": "null"
+            }, 
+            {
+              "text": "error", 
+              "from": "2", 
+              "to": "null"
+            }, 
+            {
+              "text": "running", 
+              "from": "3", 
+              "to": "null"
+            }, 
+            {
+              "text": "no value", 
+              "from": "null", 
+              "to": "null"
+            }
+          ], 
+          "nullPointMode": "connected", 
+          "prefix": "", 
+          "cacheTimeout": null, 
+          "id": 3, 
+          "maxDataPoints": 1, 
+          "mappingType": 1, 
+          "span": 2, 
+          "links": [], 
+          "title": "influxdb", 
+          "postfix": "", 
+          "postfixFontSize": "50%", 
+          "format": "none", 
+          "sparkline": {
+            "full": false, 
+            "fillColor": "rgba(31, 118, 189, 0.18)", 
+            "lineColor": "rgb(31, 120, 193)", 
+            "show": false
+          }, 
+          "colors": [
+            "rgba(245, 54, 54, 0.9)", 
+            "rgba(227, 233, 40, 0.86)", 
+            "rgba(50, 172, 45, 0.97)"
+          ], 
+          "targets": [
+            {
+              "dsType": "influxdb", 
+              "select": [
+                [
+                  {
+                    "type": "field", 
+                    "params": [
+                      "value"
+                    ]
+                  }, 
+                  {
+                    "type": "last", 
+                    "params": []
+                  }
+                ]
+              ], 
+              "rawQuery": true, 
+              "measurement": "demo.demo.services", 
+              "policy": "default", 
+              "query": "SELECT last(\"value\") FROM \"demo.demo.services\" WHERE \"service\"='influxdb' AND time > now() - 60s", 
+              "tags": [
+                {
+                  "operator": "=", 
+                  "value": "influxdb", 
+                  "key": "service"
+                }
+              ], 
+              "refId": "A", 
+              "resultFormat": "time_series"
+            }
+          ], 
+          "datasource": "${DS_INFLUXPROD}", 
+          "prefixFontSize": "50%", 
+          "valueName": "avg", 
+          "nullText": null, 
+          "type": "singlestat", 
+          "valueFontSize": "50%", 
+          "colorValue": false
+        }, 
+        {
+          "mappingTypes": [
+            {
+              "name": "value to text", 
+              "value": 1
+            }, 
+            {
+              "name": "range to text", 
+              "value": 2
+            }
+          ], 
+          "interval": null, 
+          "description": "Runs on default", 
+          "colorBackground": true, 
+          "valueMaps": [
+            {
+              "text": "undeployed", 
+              "value": "0", 
+              "op": "="
+            }, 
+            {
+              "text": "stopped", 
+              "value": "1", 
+              "op": "="
+            }, 
+            {
+              "text": "error", 
+              "value": "2", 
+              "op": "="
+            }, 
+            {
+              "text": "running", 
+              "value": "3", 
+              "op": "="
+            }, 
+            {
+              "text": "no value", 
+              "value": "null", 
+              "op": "="
+            }
+          ], 
+          "tableColumn": "", 
+          "thresholds": "2,2.5", 
+          "rangeMaps": [
+            {
+              "text": "undeployed", 
+              "from": "0", 
+              "to": "null"
+            }, 
+            {
+              "text": "stopped", 
+              "from": "1", 
+              "to": "null"
+            }, 
+            {
+              "text": "error", 
+              "from": "2", 
+              "to": "null"
+            }, 
+            {
+              "text": "running", 
+              "from": "3", 
+              "to": "null"
+            }, 
+            {
+              "text": "no value", 
+              "from": "null", 
+              "to": "null"
+            }
+          ], 
+          "nullPointMode": "connected", 
+          "prefix": "", 
+          "cacheTimeout": null, 
+          "id": 4, 
+          "maxDataPoints": 1, 
+          "mappingType": 1, 
+          "span": 2, 
+          "links": [], 
+          "title": "grafana", 
+          "postfix": "", 
+          "postfixFontSize": "50%", 
+          "format": "none", 
+          "sparkline": {
+            "full": false, 
+            "fillColor": "rgba(31, 118, 189, 0.18)", 
+            "lineColor": "rgb(31, 120, 193)", 
+            "show": false
+          }, 
+          "colors": [
+            "rgba(245, 54, 54, 0.9)", 
+            "rgba(227, 233, 40, 0.86)", 
+            "rgba(50, 172, 45, 0.97)"
+          ], 
+          "targets": [
+            {
+              "dsType": "influxdb", 
+              "select": [
+                [
+                  {
+                    "type": "field", 
+                    "params": [
+                      "value"
+                    ]
+                  }, 
+                  {
+                    "type": "last", 
+                    "params": []
+                  }
+                ]
+              ], 
+              "rawQuery": true, 
+              "measurement": "demo.demo.services", 
+              "policy": "default", 
+              "query": "SELECT last(\"value\") FROM \"demo.demo.services\" WHERE \"service\"='grafana' AND time > now() - 60s", 
+              "tags": [
+                {
+                  "operator": "=", 
+                  "value": "grafana", 
+                  "key": "service"
+                }
+              ], 
+              "refId": "A", 
+              "resultFormat": "time_series"
+            }
+          ], 
+          "datasource": "${DS_INFLUXPROD}", 
+          "prefixFontSize": "50%", 
+          "valueName": "avg", 
+          "nullText": null, 
+          "type": "singlestat", 
+          "valueFontSize": "50%", 
+          "colorValue": false
+        }
+      ], 
+      "id": 1, 
+      "showTitle": true
+    }, 
+    {
+      "collapse": true, 
+      "title": "Container influxdb", 
+      "editable": true, 
+      "height": "250px", 
+      "panels": [
+        {
+          "bars": false, 
+          "timeFrom": null, 
+          "description": "-20002ms undeployed\n\n-20001ms stopped\n\n<0ms error\n\n\\>=0ms running", 
+          "links": [], 
+          "isNew": true, 
+          "pointradius": 5, 
+          "editable": true, 
+          "_Panel__refid": 66, 
+          "nullPointMode": "connected", 
+          "grid": {
+            "threshold1": null, 
+            "threshold2Color": "rgba(234, 112, 112, 0.22)", 
+            "threshold2": null, 
+            "threshold1Color": "rgba(216, 200, 27, 0.27)"
+          }, 
+          "renderer": "flot", 
+          "stack": false, 
+          "linewidth": 1, 
+          "steppedLine": false, 
+          "id": 5, 
+          "fill": 1, 
+          "span": 4, 
+          "title": "Health Check", 
+          "timeShift": null, 
+          "points": false, 
+          "aliasColors": {}, 
+          "lines": true, 
+          "tooltip": {
+            "sort": 0, 
+            "shared": true, 
+            "value_type": "cumulative", 
+            "msResolution": false
+          }, 
+          "legend": {
+            "current": false, 
+            "sort": "current", 
+            "total": false, 
+            "values": true, 
+            "min": true, 
+            "max": true, 
+            "show": true, 
+            "alignAsTable": false, 
+            "avg": true, 
+            "sortDesc": true
+          }, 
+          "targets": [
+            {
+              "dsType": "influxdb", 
+              "tags": [
+                {
+                  "operator": "=", 
+                  "value": "health_check", 
+                  "key": "type"
+                }
+              ], 
+              "refId": "A", 
+              "alias": "influxdb", 
+              "resultFormat": "time_series", 
+              "measurement": "demo.demo.containers.influxdb", 
+              "policy": "default", 
+              "groupBy": [
+                {
+                  "type": "time", 
+                  "params": [
+                    "$interval"
+                  ]
+                }, 
+                {
+                  "type": "fill", 
+                  "params": [
+                    "none"
+                  ]
+                }
+              ], 
+              "select": [
+                [
+                  {
+                    "type": "field", 
+                    "params": [
+                      "value"
+                    ]
+                  }, 
+                  {
+                    "type": "mean", 
+                    "params": []
+                  }
+                ]
+              ]
+            }
+          ], 
+          "yaxes": [
+            {
+              "logBase": 1, 
+              "show": true, 
+              "max": null, 
+              "format": "none", 
+              "min": null, 
+              "label": "\u54cd\u5e94\u65f6\u95f4 ms"
+            }, 
+            {
+              "logBase": 1, 
+              "show": true, 
+              "max": null, 
+              "format": "short", 
+              "min": null, 
+              "label": null
+            }
+          ], 
+          "datasource": "${DS_INFLUXPROD}", 
+          "xaxis": {
+            "show": true
+          }, 
+          "error": false, 
+          "seriesOverrides": [
+            {
+              "alias": "mem_utilization", 
+              "yaxis": 2
+            }
+          ], 
+          "percentage": false, 
+          "type": "graph", 
+          "transparent": true
+        }, 
+        {
+          "bars": false, 
+          "timeFrom": null, 
+          "description": null, 
+          "links": [], 
+          "isNew": true, 
+          "pointradius": 5, 
+          "editable": true, 
+          "_Panel__refid": 68, 
+          "nullPointMode": "connected", 
+          "grid": {
+            "threshold1": null, 
+            "threshold2Color": "rgba(234, 112, 112, 0.22)", 
+            "threshold2": null, 
+            "threshold1Color": "rgba(216, 200, 27, 0.27)"
+          }, 
+          "renderer": "flot", 
+          "stack": false, 
+          "linewidth": 1, 
+          "steppedLine": false, 
+          "id": 6, 
+          "fill": 1, 
+          "span": 4, 
+          "title": "Memory", 
+          "timeShift": null, 
+          "points": false, 
+          "aliasColors": {}, 
+          "lines": true, 
+          "tooltip": {
+            "sort": 0, 
+            "shared": true, 
+            "value_type": "cumulative", 
+            "msResolution": false
+          }, 
+          "legend": {
+            "current": false, 
+            "sort": "current", 
+            "total": false, 
+            "values": true, 
+            "min": true, 
+            "max": true, 
+            "show": true, 
+            "alignAsTable": false, 
+            "avg": true, 
+            "sortDesc": true
+          }, 
+          "targets": [
+            {
+              "dsType": "influxdb", 
+              "tags": [
+                {
+                  "operator": "=", 
+                  "value": "mem_limit", 
+                  "key": "type"
+                }
+              ], 
+              "refId": "A", 
+              "alias": "mem_limit", 
+              "resultFormat": "time_series", 
+              "measurement": "demo.demo.containers.influxdb", 
+              "policy": "default", 
+              "groupBy": [
+                {
+                  "type": "time", 
+                  "params": [
+                    "$interval"
+                  ]
+                }, 
+                {
+                  "type": "fill", 
+                  "params": [
+                    "none"
+                  ]
+                }
+              ], 
+              "select": [
+                [
+                  {
+                    "type": "field", 
+                    "params": [
+                      "value"
+                    ]
+                  }, 
+                  {
+                    "type": "mean", 
+                    "params": []
+                  }
+                ]
+              ]
+            }, 
+            {
+              "dsType": "influxdb", 
+              "tags": [
+                {
+                  "operator": "=", 
+                  "value": "mem_usage", 
+                  "key": "type"
+                }
+              ], 
+              "refId": "B", 
+              "alias": "mem_usage", 
+              "resultFormat": "time_series", 
+              "measurement": "demo.demo.containers.influxdb", 
+              "policy": "default", 
+              "groupBy": [
+                {
+                  "type": "time", 
+                  "params": [
+                    "$interval"
+                  ]
+                }, 
+                {
+                  "type": "fill", 
+                  "params": [
+                    "none"
+                  ]
+                }
+              ], 
+              "select": [
+                [
+                  {
+                    "type": "field", 
+                    "params": [
+                      "value"
+                    ]
+                  }, 
+                  {
+                    "type": "mean", 
+                    "params": []
+                  }
+                ]
+              ]
+            }, 
+            {
+              "dsType": "influxdb", 
+              "tags": [
+                {
+                  "operator": "=", 
+                  "value": "mem_utilization", 
+                  "key": "type"
+                }
+              ], 
+              "refId": "C", 
+              "alias": "mem_utilization", 
+              "resultFormat": "time_series", 
+              "measurement": "demo.demo.containers.influxdb", 
+              "policy": "default", 
+              "groupBy": [
+                {
+                  "type": "time", 
+                  "params": [
+                    "$interval"
+                  ]
+                }, 
+                {
+                  "type": "fill", 
+                  "params": [
+                    "none"
+                  ]
+                }
+              ], 
+              "select": [
+                [
+                  {
+                    "type": "field", 
+                    "params": [
+                      "value"
+                    ]
+                  }, 
+                  {
+                    "type": "mean", 
+                    "params": []
+                  }
+                ]
+              ]
+            }
+          ], 
+          "yaxes": [
+            {
+              "logBase": 1, 
+              "show": true, 
+              "max": null, 
+              "format": "decmbytes", 
+              "min": null, 
+              "label": null
+            }, 
+            {
+              "logBase": 1, 
+              "show": true, 
+              "max": null, 
+              "format": "percent", 
+              "min": null, 
+              "label": null
+            }
+          ], 
+          "datasource": "${DS_INFLUXPROD}", 
+          "xaxis": {
+            "show": true
+          }, 
+          "error": false, 
+          "seriesOverrides": [
+            {
+              "alias": "mem_utilization", 
+              "yaxis": 2
+            }
+          ], 
+          "percentage": false, 
+          "type": "graph", 
+          "transparent": true
+        }, 
+        {
+          "bars": false, 
+          "timeFrom": null, 
+          "description": null, 
+          "links": [], 
+          "isNew": true, 
+          "pointradius": 5, 
+          "editable": true, 
+          "_Panel__refid": 66, 
+          "nullPointMode": "connected", 
+          "grid": {
+            "threshold1": null, 
+            "threshold2Color": "rgba(234, 112, 112, 0.22)", 
+            "threshold2": null, 
+            "threshold1Color": "rgba(216, 200, 27, 0.27)"
+          }, 
+          "renderer": "flot", 
+          "stack": false, 
+          "linewidth": 1, 
+          "steppedLine": false, 
+          "id": 7, 
+          "fill": 1, 
+          "span": 4, 
+          "title": "CPU Utilization", 
+          "timeShift": null, 
+          "points": false, 
+          "aliasColors": {}, 
+          "lines": true, 
+          "tooltip": {
+            "sort": 0, 
+            "shared": true, 
+            "value_type": "cumulative", 
+            "msResolution": false
+          }, 
+          "legend": {
+            "current": false, 
+            "sort": "current", 
+            "total": false, 
+            "values": true, 
+            "min": true, 
+            "max": true, 
+            "show": true, 
+            "alignAsTable": false, 
+            "avg": true, 
+            "sortDesc": true
+          }, 
+          "targets": [
+            {
+              "dsType": "influxdb", 
+              "tags": [
+                {
+                  "operator": "=", 
+                  "value": "cpu_utilization", 
+                  "key": "type"
+                }
+              ], 
+              "refId": "A", 
+              "alias": "cpu_utilization", 
+              "resultFormat": "time_series", 
+              "measurement": "demo.demo.containers.influxdb", 
+              "policy": "default", 
+              "groupBy": [
+                {
+                  "type": "time", 
+                  "params": [
+                    "$interval"
+                  ]
+                }, 
+                {
+                  "type": "fill", 
+                  "params": [
+                    "none"
+                  ]
+                }
+              ], 
+              "select": [
+                [
+                  {
+                    "type": "field", 
+                    "params": [
+                      "value"
+                    ]
+                  }, 
+                  {
+                    "type": "mean", 
+                    "params": []
+                  }
+                ]
+              ]
+            }
+          ], 
+          "yaxes": [
+            {
+              "logBase": 1, 
+              "show": true, 
+              "max": null, 
+              "format": "percent", 
+              "min": null, 
+              "label": null
+            }, 
+            {
+              "logBase": 1, 
+              "show": true, 
+              "max": null, 
+              "format": "short", 
+              "min": null, 
+              "label": null
+            }
+          ], 
+          "datasource": "${DS_INFLUXPROD}", 
+          "xaxis": {
+            "show": true
+          }, 
+          "error": false, 
+          "seriesOverrides": [
+            {
+              "alias": "mem_utilization", 
+              "yaxis": 2
+            }
+          ], 
+          "percentage": false, 
+          "type": "graph", 
+          "transparent": true
+        }
+      ], 
+      "id": 1, 
+      "showTitle": true
+    }, 
+    {
+      "collapse": true, 
+      "title": "Container grafana", 
+      "editable": true, 
+      "height": "250px", 
+      "panels": [
+        {
+          "bars": false, 
+          "timeFrom": null, 
+          "description": "-20002ms undeployed\n\n-20001ms stopped\n\n<0ms error\n\n\\>=0ms running", 
+          "links": [], 
+          "isNew": true, 
+          "pointradius": 5, 
+          "editable": true, 
+          "_Panel__refid": 66, 
+          "nullPointMode": "connected", 
+          "grid": {
+            "threshold1": null, 
+            "threshold2Color": "rgba(234, 112, 112, 0.22)", 
+            "threshold2": null, 
+            "threshold1Color": "rgba(216, 200, 27, 0.27)"
+          }, 
+          "renderer": "flot", 
+          "stack": false, 
+          "linewidth": 1, 
+          "steppedLine": false, 
+          "id": 8, 
+          "fill": 1, 
+          "span": 4, 
+          "title": "Health Check", 
+          "timeShift": null, 
+          "points": false, 
+          "aliasColors": {}, 
+          "lines": true, 
+          "tooltip": {
+            "sort": 0, 
+            "shared": true, 
+            "value_type": "cumulative", 
+            "msResolution": false
+          }, 
+          "legend": {
+            "current": false, 
+            "sort": "current", 
+            "total": false, 
+            "values": true, 
+            "min": true, 
+            "max": true, 
+            "show": true, 
+            "alignAsTable": false, 
+            "avg": true, 
+            "sortDesc": true
+          }, 
+          "targets": [
+            {
+              "dsType": "influxdb", 
+              "tags": [
+                {
+                  "operator": "=", 
+                  "value": "health_check", 
+                  "key": "type"
+                }
+              ], 
+              "refId": "A", 
+              "alias": "grafana", 
+              "resultFormat": "time_series", 
+              "measurement": "demo.demo.containers.grafana", 
+              "policy": "default", 
+              "groupBy": [
+                {
+                  "type": "time", 
+                  "params": [
+                    "$interval"
+                  ]
+                }, 
+                {
+                  "type": "fill", 
+                  "params": [
+                    "none"
+                  ]
+                }
+              ], 
+              "select": [
+                [
+                  {
+                    "type": "field", 
+                    "params": [
+                      "value"
+                    ]
+                  }, 
+                  {
+                    "type": "mean", 
+                    "params": []
+                  }
+                ]
+              ]
+            }
+          ], 
+          "yaxes": [
+            {
+              "logBase": 1, 
+              "show": true, 
+              "max": null, 
+              "format": "none", 
+              "min": null, 
+              "label": "\u54cd\u5e94\u65f6\u95f4 ms"
+            }, 
+            {
+              "logBase": 1, 
+              "show": true, 
+              "max": null, 
+              "format": "short", 
+              "min": null, 
+              "label": null
+            }
+          ], 
+          "datasource": "${DS_INFLUXPROD}", 
+          "xaxis": {
+            "show": true
+          }, 
+          "error": false, 
+          "seriesOverrides": [
+            {
+              "alias": "mem_utilization", 
+              "yaxis": 2
+            }
+          ], 
+          "percentage": false, 
+          "type": "graph", 
+          "transparent": true
+        }, 
+        {
+          "bars": false, 
+          "timeFrom": null, 
+          "description": null, 
+          "links": [], 
+          "isNew": true, 
+          "pointradius": 5, 
+          "editable": true, 
+          "_Panel__refid": 68, 
+          "nullPointMode": "connected", 
+          "grid": {
+            "threshold1": null, 
+            "threshold2Color": "rgba(234, 112, 112, 0.22)", 
+            "threshold2": null, 
+            "threshold1Color": "rgba(216, 200, 27, 0.27)"
+          }, 
+          "renderer": "flot", 
+          "stack": false, 
+          "linewidth": 1, 
+          "steppedLine": false, 
+          "id": 9, 
+          "fill": 1, 
+          "span": 4, 
+          "title": "Memory", 
+          "timeShift": null, 
+          "points": false, 
+          "aliasColors": {}, 
+          "lines": true, 
+          "tooltip": {
+            "sort": 0, 
+            "shared": true, 
+            "value_type": "cumulative", 
+            "msResolution": false
+          }, 
+          "legend": {
+            "current": false, 
+            "sort": "current", 
+            "total": false, 
+            "values": true, 
+            "min": true, 
+            "max": true, 
+            "show": true, 
+            "alignAsTable": false, 
+            "avg": true, 
+            "sortDesc": true
+          }, 
+          "targets": [
+            {
+              "dsType": "influxdb", 
+              "tags": [
+                {
+                  "operator": "=", 
+                  "value": "mem_limit", 
+                  "key": "type"
+                }
+              ], 
+              "refId": "A", 
+              "alias": "mem_limit", 
+              "resultFormat": "time_series", 
+              "measurement": "demo.demo.containers.grafana", 
+              "policy": "default", 
+              "groupBy": [
+                {
+                  "type": "time", 
+                  "params": [
+                    "$interval"
+                  ]
+                }, 
+                {
+                  "type": "fill", 
+                  "params": [
+                    "none"
+                  ]
+                }
+              ], 
+              "select": [
+                [
+                  {
+                    "type": "field", 
+                    "params": [
+                      "value"
+                    ]
+                  }, 
+                  {
+                    "type": "mean", 
+                    "params": []
+                  }
+                ]
+              ]
+            }, 
+            {
+              "dsType": "influxdb", 
+              "tags": [
+                {
+                  "operator": "=", 
+                  "value": "mem_usage", 
+                  "key": "type"
+                }
+              ], 
+              "refId": "B", 
+              "alias": "mem_usage", 
+              "resultFormat": "time_series", 
+              "measurement": "demo.demo.containers.grafana", 
+              "policy": "default", 
+              "groupBy": [
+                {
+                  "type": "time", 
+                  "params": [
+                    "$interval"
+                  ]
+                }, 
+                {
+                  "type": "fill", 
+                  "params": [
+                    "none"
+                  ]
+                }
+              ], 
+              "select": [
+                [
+                  {
+                    "type": "field", 
+                    "params": [
+                      "value"
+                    ]
+                  }, 
+                  {
+                    "type": "mean", 
+                    "params": []
+                  }
+                ]
+              ]
+            }, 
+            {
+              "dsType": "influxdb", 
+              "tags": [
+                {
+                  "operator": "=", 
+                  "value": "mem_utilization", 
+                  "key": "type"
+                }
+              ], 
+              "refId": "C", 
+              "alias": "mem_utilization", 
+              "resultFormat": "time_series", 
+              "measurement": "demo.demo.containers.grafana", 
+              "policy": "default", 
+              "groupBy": [
+                {
+                  "type": "time", 
+                  "params": [
+                    "$interval"
+                  ]
+                }, 
+                {
+                  "type": "fill", 
+                  "params": [
+                    "none"
+                  ]
+                }
+              ], 
+              "select": [
+                [
+                  {
+                    "type": "field", 
+                    "params": [
+                      "value"
+                    ]
+                  }, 
+                  {
+                    "type": "mean", 
+                    "params": []
+                  }
+                ]
+              ]
+            }
+          ], 
+          "yaxes": [
+            {
+              "logBase": 1, 
+              "show": true, 
+              "max": null, 
+              "format": "decmbytes", 
+              "min": null, 
+              "label": null
+            }, 
+            {
+              "logBase": 1, 
+              "show": true, 
+              "max": null, 
+              "format": "percent", 
+              "min": null, 
+              "label": null
+            }
+          ], 
+          "datasource": "${DS_INFLUXPROD}", 
+          "xaxis": {
+            "show": true
+          }, 
+          "error": false, 
+          "seriesOverrides": [
+            {
+              "alias": "mem_utilization", 
+              "yaxis": 2
+            }
+          ], 
+          "percentage": false, 
+          "type": "graph", 
+          "transparent": true
+        }, 
+        {
+          "bars": false, 
+          "timeFrom": null, 
+          "description": null, 
+          "links": [], 
+          "isNew": true, 
+          "pointradius": 5, 
+          "editable": true, 
+          "_Panel__refid": 66, 
+          "nullPointMode": "connected", 
+          "grid": {
+            "threshold1": null, 
+            "threshold2Color": "rgba(234, 112, 112, 0.22)", 
+            "threshold2": null, 
+            "threshold1Color": "rgba(216, 200, 27, 0.27)"
+          }, 
+          "renderer": "flot", 
+          "stack": false, 
+          "linewidth": 1, 
+          "steppedLine": false, 
+          "id": 10, 
+          "fill": 1, 
+          "span": 4, 
+          "title": "CPU Utilization", 
+          "timeShift": null, 
+          "points": false, 
+          "aliasColors": {}, 
+          "lines": true, 
+          "tooltip": {
+            "sort": 0, 
+            "shared": true, 
+            "value_type": "cumulative", 
+            "msResolution": false
+          }, 
+          "legend": {
+            "current": false, 
+            "sort": "current", 
+            "total": false, 
+            "values": true, 
+            "min": true, 
+            "max": true, 
+            "show": true, 
+            "alignAsTable": false, 
+            "avg": true, 
+            "sortDesc": true
+          }, 
+          "targets": [
+            {
+              "dsType": "influxdb", 
+              "tags": [
+                {
+                  "operator": "=", 
+                  "value": "cpu_utilization", 
+                  "key": "type"
+                }
+              ], 
+              "refId": "A", 
+              "alias": "cpu_utilization", 
+              "resultFormat": "time_series", 
+              "measurement": "demo.demo.containers.grafana", 
+              "policy": "default", 
+              "groupBy": [
+                {
+                  "type": "time", 
+                  "params": [
+                    "$interval"
+                  ]
+                }, 
+                {
+                  "type": "fill", 
+                  "params": [
+                    "none"
+                  ]
+                }
+              ], 
+              "select": [
+                [
+                  {
+                    "type": "field", 
+                    "params": [
+                      "value"
+                    ]
+                  }, 
+                  {
+                    "type": "mean", 
+                    "params": []
+                  }
+                ]
+              ]
+            }
+          ], 
+          "yaxes": [
+            {
+              "logBase": 1, 
+              "show": true, 
+              "max": null, 
+              "format": "percent", 
+              "min": null, 
+              "label": null
+            }, 
+            {
+              "logBase": 1, 
+              "show": true, 
+              "max": null, 
+              "format": "short", 
+              "min": null, 
+              "label": null
+            }
+          ], 
+          "datasource": "${DS_INFLUXPROD}", 
+          "xaxis": {
+            "show": true
+          }, 
+          "error": false, 
+          "seriesOverrides": [
+            {
+              "alias": "mem_utilization", 
+              "yaxis": 2
+            }
+          ], 
+          "percentage": false, 
+          "type": "graph", 
+          "transparent": true
+        }
+      ], 
+      "id": 1, 
+      "showTitle": true
+    }
+  ], 
+  "title": "demo.demo", 
+  "hideControls": false, 
+  "refresh": "30s", 
+  "gnetId": 331, 
+  "version": 15, 
+  "sharedCrosshair": false, 
+  "time": {
+    "to": "now", 
+    "from": "now-1h"
+  }, 
+  "annotations": {
+    "list": []
+  }
+}

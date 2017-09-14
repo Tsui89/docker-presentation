@@ -97,7 +97,7 @@ db                       docs                     influxdb                 opent
 demo.demo-dashboard.json grafana                  k2-compose.yml           random.sh
 ```
 
-然后在granfana上选择dashbord  import。
+然后在granfana上选择dashbord  import demo.demo-dashboard.json。
 
 <div>
         <img width="100%" src="https://tsui89.github.io/docker-presentation/img/import.png"/>
